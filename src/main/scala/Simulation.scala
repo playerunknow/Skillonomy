@@ -6,7 +6,8 @@ class Simulation(months_to_simulate: Int, Market: Market, Office: Office)
   def createTeachers() : Unit =
   {
     var i: Int = 0
-    while (i < 5) {
+    while (i < 5)
+    {
       val teacher = new Teacher(i.toString(), i + 1.toString(), i + 30, i + 30.toString() + "gmail.com",
         scala.util.Random.nextInt(1000) + 300, scala.util.Random.nextInt(1000) + 300)
 
@@ -38,7 +39,28 @@ class Simulation(months_to_simulate: Int, Market: Market, Office: Office)
 
       Office.ListOfTeachers(random_number_teacher - 1).addStudent(Office.ListOfStudents(random_number_student - 1))
     }
+  }
 
+  def createCourses(): Unit =
+  {
+    var i: Int = 0
+
+    while (i < 10)
+    {
+      val random_number_teacher: Int = scala.util.Random.nextInt(5) + 1
+      val random_number_course: Int = scala.util.Random.nextInt(10) + 1
+
+      val course = new Course(i.toString(), scala.util.Random.nextInt(100) + 1, scala.util.Random.nextInt(10) + 1)
+
+      Office.ListOfTeachers(random_number_teacher - 1).addCourse(course)
+    }
+
+
+  }
+  def AddCoursesToTeachers(): Unit =
+  {
+    val random_number_teacher: Int = scala.util.Random.nextInt(5) + 1
+    val random_number_course: Int = scala.util.Random.nextInt(5) + 1
   }
 
   def printSimulation(): Unit =

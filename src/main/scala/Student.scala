@@ -1,12 +1,18 @@
 class Student (name:String  = "No data", surname:String  = "No data", age:Int = 0, email:String = "No data",
-               tokens:Int = 0, money:Double = 0) extends Human(name, surname, age, email, tokens, money)
+               tokens:Double = 0, money:Double = 0) extends Human(name, surname, age, email, tokens, money)
 {
   override val role = "Student"
   val rand: scala.util.Random = scala.util.Random
   var desire_to_learn = rand.nextInt(5)
-  var generateGrade: Int = scala.util.Random.nextInt(100)
   var list_of_grades: List[Int] = Nil
   var is_studying = true
+
+
+  //geters
+  //def GetTokens: Double = tokens
+  //def GetMoney: Double = money
+
+  //seters
 
   override def printHuman(): Unit =
   {
@@ -18,6 +24,7 @@ class Student (name:String  = "No data", surname:String  = "No data", age:Int = 
 
   def doTask(): Int =
   {
+    val generateGrade: Int = scala.util.Random.nextInt(100)
     var grade: Int = 0;
     if (0 <= generateGrade && generateGrade <= 34)
     {

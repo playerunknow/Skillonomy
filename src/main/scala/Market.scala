@@ -14,12 +14,12 @@ class Market(val tokensAvailable: Double = 10000, val moneyAvailable: Double = 1
     }
     if (human.tokens >= number)
     {
-      human.tokens -= number
-      human.money += (number * rate).toInt
-      _moneyAvailable -= number * rate
-      _tokensAvailable += number
+      //human.tokens -= number
+      //human.money += (number * rate).toInt
+      //_moneyAvailable -= number * rate
+      //_tokensAvailable += number
       // дописать
-      human.tokens = 0;
+      //human.tokens = 0;
     }
     else
     {
