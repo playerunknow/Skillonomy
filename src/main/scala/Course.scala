@@ -4,15 +4,12 @@ class Course(val _courseName: String = "Course", val _coursePrice: Double = 100,
   var coursePrice: Double = _coursePrice
   var courseDuration: Int = _courseDuration
 
-  def addStudent(): Unit =
-  {
-
-  }
 
   def printCourseInfo(): Unit =
   {
     println(s"courseName: $courseName" + "\n" + s"coursePrice: $coursePrice" + "\n" +
       s"courseDuration: $courseDuration" + "\n")
   }
+
 
 }

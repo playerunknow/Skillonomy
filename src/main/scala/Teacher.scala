@@ -22,23 +22,23 @@ class Teacher (name:String  = "No data", surname:String  = "No data", age:Int = 
     val grade = student.doTask()
     if (grade == 1)
     {
-
+      student.tokens = student.tokens - ((ListOfCourse.head._coursePrice / 100) * 10)
     }
     else if(grade == 2)
     {
-
+      student.tokens = student.tokens - ((ListOfCourse.head._coursePrice / 100) * 5)
     }
     else if (grade == 3)
     {
-
+      student.tokens = student.tokens - ((ListOfCourse.head._coursePrice / 100) * 0)
     }
     else if (grade == 4)
     {
-
+      student.tokens = student.tokens + ((ListOfCourse.head._coursePrice / 100) * 5)
     }
     else if(grade == 5)
     {
-
+      student.tokens = student.tokens + ((ListOfCourse.head._coursePrice / 100) * 10)
     }
   }
 
@@ -49,9 +49,10 @@ class Teacher (name:String  = "No data", surname:String  = "No data", age:Int = 
     student.is_studying = false
   }
 
-  def deleteCourse(course: Course): Unit =
+  def deleteCourse(course: Course, CourseId : Int): Unit =
   {
-
+    val newlist = ListOfCourse.filter(_ == course)
+    ListOfCourse = newlist
   }
 
   def printStudents(): Unit =

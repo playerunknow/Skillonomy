@@ -8,7 +8,8 @@ class Market(val tokensAvailable: Double = 10000, val moneyAvailable: Double = 1
 
   def sellTokens(human: Human, number: Int): Unit =
   {
-    if (number * rate > moneyAvailable) {
+    if (number * rate > moneyAvailable)
+    {
       println("Sorry, Market doesn't have enough money now. Please, try later or sell less tokens")
       return
     }

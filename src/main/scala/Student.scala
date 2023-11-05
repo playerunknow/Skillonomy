@@ -54,4 +54,9 @@ class Student (name:String  = "No data", surname:String  = "No data", age:Int = 
     list_of_grades = grade :: list_of_grades
     grade
   }
+
+  def encourageToCourse(): Unit =
+  {
+    // takes course and add to list of student courses
+  }
 }
