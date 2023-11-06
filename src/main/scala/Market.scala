@@ -5,6 +5,10 @@ class Market(val tokensAvailable: Double = 10000, val moneyAvailable: Double = 1
   var _moneyAvailable = moneyAvailable
   var _allTokens = allTokens
 
+  def Rate: Double = moneyAvailable / allTokens
+  def TokensAvailable: Double = tokensAvailable
+  def MoneyAvailable: Double = moneyAvailable
+  def AllTokens: Double = allTokens
 
   def sellTokens(human: Human, number: Int): Unit =
   {

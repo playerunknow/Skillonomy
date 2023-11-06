@@ -2,6 +2,19 @@ import scala.math.random
 
 class Simulation(months_to_simulate: Int, Market: Market, Office: Office)
 {
+
+  def createInvestors(): Unit =
+  {
+    var randomNumberOfInvestors: Int = scala.util.Random.nextInt(3) + 1
+
+    var i: Int = 0
+    while (i < randomNumberOfInvestors)
+    {
+      //val investor = new Investor()
+      i += 1
+    }
+  }
+
   def createTeachers() : Unit =
   {
     var i: Int = 0
@@ -51,6 +64,13 @@ class Simulation(months_to_simulate: Int, Market: Market, Office: Office)
     }
   }
 
+
+  def investorsActions(): Unit =
+  {
+    val rand: scala.util.Random = scala.util.Random
+
+
+  }
 
 
   def printSimulation(): Unit =
