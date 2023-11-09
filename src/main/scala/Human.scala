@@ -11,6 +11,6 @@ abstract class Human(val name: String = "No Data", val surname: String = "No Dat
   
   def printHuman() : Unit = 
   {
-    println(s"${role} ${name} ${surname}: ${role}, ${age} years old, email - ${email}, tokens - ${Tokens}, money - ${money}")
+    println(s"${Role} ${name} ${surname}: ${Role}, ${age} years old, email - ${email}, tokens - ${Tokens}, money - ${Money}")
   }
 }

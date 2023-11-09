@@ -55,8 +55,4 @@ class Student (name:String  = "No data", surname:String  = "No data", age:Int = 
     grade
   }
 
-  def encourageToCourse(): Unit =
-  {
-    // takes course and add to list of student courses
-  }
 }

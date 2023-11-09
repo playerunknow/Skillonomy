@@ -4,7 +4,6 @@ class Teacher (name:String  = "No data", surname:String  = "No data", age:Int = 
 {
   override val role = "Teacher"
   val rand: scala.util.Random = scala.util.Random
-  private val teaching_skills = rand.nextInt(5)
   var ListOfStudents = list_of_students
   var ListOfCourse = list_of_course
 
@@ -17,28 +16,36 @@ class Teacher (name:String  = "No data", surname:String  = "No data", age:Int = 
     ListOfCourse = course :: ListOfCourse
   }
 
+  def GetSalary(Market: Market): Unit =
+  {
+    val amountOfStudents = ListOfStudents.length
+    val teacherSalary = (amountOfStudents * ListOfCourse.head.CoursePrice)
+    Market.setAllTokens(Market.TokensAvailable - teacherSalary)
+    tokens += teacherSalary
+  }
+
   def giveTask(student: Student): Unit =
   {
     val grade = student.doTask()
     if (grade == 1)
     {
-      student.tokens = student.tokens - ((ListOfCourse.head._coursePrice / 100) * 10)
+      student.tokens = student.tokens - ((ListOfCourse.head.CoursePrice / 100) * 10)
     }
     else if(grade == 2)
     {
-      student.tokens = student.tokens - ((ListOfCourse.head._coursePrice / 100) * 5)
+      student.tokens = student.tokens - ((ListOfCourse.head.CoursePrice / 100) * 5)
     }
     else if (grade == 3)
     {
-      student.tokens = student.tokens - ((ListOfCourse.head._coursePrice / 100) * 0)
+      student.tokens = student.tokens - ((ListOfCourse.head.CoursePrice / 100) * 0)
     }
     else if (grade == 4)
     {
-      student.tokens = student.tokens + ((ListOfCourse.head._coursePrice / 100) * 5)
+      student.tokens = student.tokens + ((ListOfCourse.head.CoursePrice / 100) * 5)
     }
     else if(grade == 5)
     {
-      student.tokens = student.tokens + ((ListOfCourse.head._coursePrice / 100) * 10)
+      student.tokens = student.tokens + ((ListOfCourse.head.CoursePrice / 100) * 10)
     }
   }
 

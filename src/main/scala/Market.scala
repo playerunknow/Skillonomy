@@ -1,14 +1,28 @@
-class Market(val tokensAvailable: Double = 10000, val moneyAvailable: Double = 100000, val allTokens: Double = 10000)
+class Market(var tokensAvailable: Double = 10000, var moneyAvailable: Double = 100000, var allTokens: Double = 10000)
 {
   var rate: Double = moneyAvailable / allTokens
-  var _tokensAvailable = tokensAvailable
-  var _moneyAvailable = moneyAvailable
-  var _allTokens = allTokens
 
+  // getters
   def Rate: Double = moneyAvailable / allTokens
   def TokensAvailable: Double = tokensAvailable
   def MoneyAvailable: Double = moneyAvailable
   def AllTokens: Double = allTokens
+
+  // setters
+
+  def setTokensAvailable(Value:Double): Unit =
+  {
+    tokensAvailable = Value
+  }
+  def setMoneyAvailable(Value: Double): Unit =
+  {
+    moneyAvailable = Value
+  }
+  def setAllTokens(Value: Double): Unit =
+  {
+    allTokens = Value
+  }
+
 
   def sellTokens(human: Human, number: Int): Unit =
   {

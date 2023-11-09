@@ -65,6 +65,18 @@ class Simulation(months_to_simulate: Int, Market: Market, Office: Office)
   }
 
 
+
+  def Simulation(): Unit =
+  {
+    createTeachers()
+    createStudents()
+    UniteStudentsWithTeachers()
+    createCourses()
+
+
+
+  }
+
   def investorsActions(): Unit =
   {
     val rand: scala.util.Random = scala.util.Random
@@ -75,10 +87,7 @@ class Simulation(months_to_simulate: Int, Market: Market, Office: Office)
 
   def printSimulation(): Unit =
   {
-    createTeachers()
-    createStudents()
-    UniteStudentsWithTeachers()
-    createCourses()
+    Simulation()
     Office.printOffice()
     Market.printMarket()
   }
