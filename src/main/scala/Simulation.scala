@@ -3,6 +3,7 @@ import scala.math.random
 class Simulation(months_to_simulate: Int, Market: Market, Office: Office)
 {
 
+
   def createInvestors(): Unit =
   {
     var randomNumberOfInvestors: Int = scala.util.Random.nextInt(3) + 1
@@ -30,6 +31,7 @@ class Simulation(months_to_simulate: Int, Market: Market, Office: Office)
 
   def createStudents() : Unit =
   {
+    // clear list of student
     var i: Int = 0
     while (i < 20)
     {
@@ -55,26 +57,11 @@ class Simulation(months_to_simulate: Int, Market: Market, Office: Office)
 
   def createCourses(): Unit =
   {
-    var i: Int = 0
-
     for (i <- 1 to 5)
     {
       val course = new Course(i.toString(), scala.util.Random.nextInt(100) + 1, scala.util.Random.nextInt(10) + 1)
       Office.ListOfTeachers(i - 1).addCourse(course)
     }
-  }
-
-
-
-  def Simulation(): Unit =
-  {
-    createTeachers()
-    createStudents()
-    UniteStudentsWithTeachers()
-    createCourses()
-
-
-
   }
 
   def investorsActions(): Unit =
@@ -84,10 +71,38 @@ class Simulation(months_to_simulate: Int, Market: Market, Office: Office)
 
   }
 
+  def Simulation(): Unit =
+  {
+    createTeachers()
+    createStudents()
+    UniteStudentsWithTeachers()
+    createCourses()
+
+//    var maxCourseDuration: Int = 0
+//    var numberOfTeachers: Int = (Office.ListOfTeachers.length - 1)
+//    var amountOfTeacher: Int = Office.ListOfTeachers.size
+
+
+
+//    for(i <- 0 to (Office.ListOfTeachers.length - 1))
+//    {
+//      //var Teacher = Office.ListOfTeachers.apply(i)
+//      var temp = Office.ListOfTeachers.apply(i).ListOfCourse.head.CourseDuration
+//      for(j <- 0 to (temp - 1))
+//      {
+//        for(k <- 0 to (Office.ListOfTeachers.apply(i).ListOfStudents.length - 1))
+//        {
+//          Office.ListOfTeachers.apply(i).giveTask(Office.ListOfTeachers.apply(i).ListOfStudents.apply(k))
+//        }
+//      }
+//    }
+  }
+
 
   def printSimulation(): Unit =
   {
     Simulation()
+
     Office.printOffice()
     Market.printMarket()
   }

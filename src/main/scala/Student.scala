@@ -9,17 +9,23 @@ class Student (name:String  = "No data", surname:String  = "No data", age:Int = 
 
 
   //geters
-  //def GetTokens: Double = tokens
-  //def GetMoney: Double = money
+  def GetTokens: Double = tokens
+  def GetMoney: Double = money
 
   //seters
+
+
 
   override def printHuman(): Unit =
   {
     super.printHuman()
     if (is_studying) println("Studying now")
     else println("Already work")
-    println("Average grade = " )
+    println("Grades = " )
+    for(i <- 0 to (list_of_grades.length - 1))
+    {
+      println(list_of_grades.apply(i))
+    }
   }
 
   def doTask(): Int =

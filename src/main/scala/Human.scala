@@ -5,9 +5,22 @@ abstract class Human(val name: String = "No Data", val surname: String = "No Dat
   //private val Money: Double = money       may cause a problem
   val role: String = "No Data"
 
+  //getters
   def Tokens: Double = tokens
   def Money: Double = money
   def Role: String = "No Data"
+
+  // setters
+
+  def SetHumanTokens(Value: Double): Unit =
+  {
+    tokens = Value
+  }
+
+  def SetHumansMoney(Value:Double): Unit =
+  {
+    money = Value
+  }
   
   def printHuman() : Unit = 
   {
