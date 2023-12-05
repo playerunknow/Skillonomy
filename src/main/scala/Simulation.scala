@@ -78,6 +78,20 @@ class Simulation(months_to_simulate: Int, Market: Market, Office: Office)
     UniteStudentsWithTeachers()
     createCourses()
 
+// test sell tokens
+//    Office.ListOfTeachers(2).printHuman()
+//    Office.ListOfTeachers(1).printHuman()
+//    Market.sellTokens(Office.ListOfTeachers(1), 100)
+//    Office.ListOfTeachers(1).printHuman()
+//    Office.ListOfTeachers(2).printHuman()
+
+//test buy Tokens
+//    Office.ListOfTeachers(2).printHuman()
+//    Office.ListOfTeachers(1).printHuman()
+//    Market.buyTokens(Office.ListOfTeachers(1), 100)
+//    Office.ListOfTeachers(1).printHuman()
+//    Office.ListOfTeachers(2).printHuman()
+
 //    var maxCourseDuration: Int = 0
 //    var numberOfTeachers: Int = (Office.ListOfTeachers.length - 1)
 //    var amountOfTeacher: Int = Office.ListOfTeachers.size
@@ -96,6 +110,22 @@ class Simulation(months_to_simulate: Int, Market: Market, Office: Office)
 //        }
 //      }
 //    }
+
+    for(i <- 0 to (Office.ListOfTeachers.length - 1))
+    {
+      var TeacherCourseDuration: Int = Office.ListOfTeachers(i).ListOfCourse.head.CourseDuration
+
+      for(j <- 0 to TeacherCourseDuration - 1)
+      {
+        for(k <- 0 to Office.ListOfTeachers(i).ListOfStudents.length - 1)
+        {
+          Office.ListOfTeachers(i).giveTask(Office.ListOfTeachers(i).ListOfStudents(k))
+        }
+      }
+    }
+
+
+
   }
 
 
