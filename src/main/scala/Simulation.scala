@@ -3,6 +3,9 @@ import scala.math.random
 class Simulation(months_to_simulate: Int, Market: Market, Office: Office)
 {
 
+  var longestCourseDuration: Int = 0
+  var amountOfTeachers: Int = 2
+  var amontOfStudent: Int = 3
 
   def createInvestors(): Unit =
   {
@@ -19,7 +22,7 @@ class Simulation(months_to_simulate: Int, Market: Market, Office: Office)
   def createTeachers() : Unit =
   {
     var i: Int = 0
-    while (i < 5)
+    while (i < amountOfTeachers)
     {
       val teacher = new Teacher(i.toString(), i + 1.toString(), i + 30, i + 30.toString() + "gmail.com",
         scala.util.Random.nextInt(1000) + 300, scala.util.Random.nextInt(1000) + 300)
@@ -33,7 +36,7 @@ class Simulation(months_to_simulate: Int, Market: Market, Office: Office)
   {
     // clear list of student
     var i: Int = 0
-    while (i < 20)
+    while (i < amontOfStudent)
     {
       val student = new Student(i.toString(), i + 1.toString(), i + 30, i + 30.toString() + "gmail.com",
         scala.util.Random.nextInt(1000) + 300, scala.util.Random.nextInt(1000) + 300)
@@ -46,10 +49,10 @@ class Simulation(months_to_simulate: Int, Market: Market, Office: Office)
 
   def UniteStudentsWithTeachers() : Unit =
   {
-    for (i <- 1 to 20)
+    for (i <- 1 to amountOfTeachers)
     {
-      val random_number_teacher: Int = scala.util.Random.nextInt(5) + 1
-      val random_number_student: Int = scala.util.Random.nextInt(20) + 1
+      val random_number_teacher: Int = scala.util.Random.nextInt(amountOfTeachers) + 1
+      val random_number_student: Int = scala.util.Random.nextInt(amontOfStudent) + 1
 
       Office.ListOfTeachers(random_number_teacher - 1).addStudent(Office.ListOfStudents(random_number_student - 1))
     }
@@ -57,7 +60,7 @@ class Simulation(months_to_simulate: Int, Market: Market, Office: Office)
 
   def createCourses(): Unit =
   {
-    for (i <- 1 to 5)
+    for (i <- 1 to 2)
     {
       val course = new Course(i.toString(), scala.util.Random.nextInt(100) + 1, scala.util.Random.nextInt(10) + 1)
       Office.ListOfTeachers(i - 1).addCourse(course)
@@ -71,12 +74,26 @@ class Simulation(months_to_simulate: Int, Market: Market, Office: Office)
 
   }
 
+  def theLongestCourse(): Unit =
+  {
+    for (i <- 0 to (Office.ListOfTeachers.length - 1))
+    {
+      var CurrentCourseDuration: Int = Office.ListOfTeachers(i).ListOfCourse.head.CourseDuration
+
+      if (longestCourseDuration < CurrentCourseDuration)
+      {
+        longestCourseDuration = CurrentCourseDuration
+      }
+    }
+  }
+
   def Simulation(): Unit =
   {
     createTeachers()
     createStudents()
     UniteStudentsWithTeachers()
     createCourses()
+    theLongestCourse()
 
 // test sell tokens
 //    Office.ListOfTeachers(2).printHuman()
@@ -111,29 +128,42 @@ class Simulation(months_to_simulate: Int, Market: Market, Office: Office)
 //      }
 //    }
 
-    for(i <- 0 to (Office.ListOfTeachers.length - 1))
-    {
-      var TeacherCourseDuration: Int = Office.ListOfTeachers(i).ListOfCourse.head.CourseDuration
 
-      for(j <- 0 to TeacherCourseDuration - 1)
+
+
+
+    for(i <- 0 to longestCourseDuration)
+    {
+      var amountOfTeachers: Int =  Office.ListOfTeachers.length
+
+      for(j <- 0 to amountOfTeachers - 1)
       {
-        for(k <- 0 to Office.ListOfTeachers(i).ListOfStudents.length - 1)
+        var currentTeacherCourseDuration: Int = Office.ListOfTeachers(j).ListOfCourse.head.CourseDuration
+        var currentTeacherStudentsAmount = Office.ListOfTeachers(j).ListOfStudents.length
+
+        if (currentTeacherCourseDuration > i)
         {
-          Office.ListOfTeachers(i).giveTask(Office.ListOfTeachers(i).ListOfStudents(k))
+          for (k <- 0 to (currentTeacherStudentsAmount - 1))
+          {
+            Office.ListOfTeachers(j).giveTask(Office.ListOfTeachers(j).ListOfStudents(k))
+          }
+          Office.ListOfTeachers(j).GetSalary(Market)
+          println("sallary get")
         }
       }
     }
 
-
-
+    for (i <- 0 to amountOfTeachers - 1)
+    {
+      Office.ListOfTeachers(i).printHuman()
+    }
   }
-
 
   def printSimulation(): Unit =
   {
     Simulation()
 
-    Office.printOffice()
+    //Office.printOffice()
     Market.printMarket()
   }
 }

@@ -23,7 +23,7 @@ class Teacher (name:String  = "No data", surname:String  = "No data", age:Int = 
     val amountOfStudents = ListOfStudents.length
     val teacherSalary = (amountOfStudents * ListOfCourse.head.CoursePrice)
     Market.setAllTokens(Market.TokensAvailable - teacherSalary)
-    //tokens = (tokens + teacherSalary)
+    SetHumanTokens(tokens + teacherSalary)
   }
 
   def giveTask(student: Student): Unit =
@@ -68,6 +68,9 @@ class Teacher (name:String  = "No data", surname:String  = "No data", age:Int = 
   {
     println(s"${name} ${surname} students: ")
     for (student <- ListOfStudents) student.printHuman()
+
+    println(" ")
+
   }
 
   def printCourse(): Unit =
@@ -79,7 +82,7 @@ class Teacher (name:String  = "No data", surname:String  = "No data", age:Int = 
   override def printHuman(): Unit =
   {
     super.printHuman()
-    //println(s"CourseDuration = ${ListOfCourse.head.CourseDuration}, CoursePrice = ${ListOfCourse.head.CoursePrice}")
+    println(s"CourseDuration = ${ListOfCourse.head.CourseDuration}, CoursePrice = ${ListOfCourse.head.CoursePrice}")
     printStudents()
   }
 }

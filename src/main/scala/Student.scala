@@ -20,12 +20,14 @@ class Student (name:String  = "No data", surname:String  = "No data", age:Int = 
   {
     super.printHuman()
     if (is_studying) println("Studying now")
-    else println("Already work")
-    println("Grades = " )
+    else println("Already work or left")
+    print("Grades = " )
     for(i <- 0 to (list_of_grades.length - 1))
     {
-      println(list_of_grades.apply(i))
+      print(list_of_grades.apply(i) + " ")
     }
+    println(" ")
+
   }
 
   def doTask(): Int =
@@ -35,27 +37,22 @@ class Student (name:String  = "No data", surname:String  = "No data", age:Int = 
     if (0 <= generateGrade && generateGrade <= 34)
     {
       grade = 1
-      println("1 з 5")
     }
     else if (35 <= generateGrade && generateGrade <= 59)
     {
       grade = 2
-      println("2 з 5")
     }
     else if (60 <= generateGrade && generateGrade <= 74)
     {
       grade = 3
-      println("3 з 5")
     }
     else if (75 <= generateGrade && generateGrade <= 89)
     {
       grade = 4
-      println("4 з 5")
     }
     else if (90 <= generateGrade && generateGrade <= 100)
     {
       grade = 5
-      println("5 з 5")
     }
     list_of_grades = grade :: list_of_grades
     grade
