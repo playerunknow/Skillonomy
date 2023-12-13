@@ -4,8 +4,8 @@ class Simulation(months_to_simulate: Int, Market: Market, Office: Office)
 {
 
   var longestCourseDuration: Int = 0
-  var amountOfTeachers: Int = 2
-  var amontOfStudent: Int = 3
+  var amountOfTeachers: Int = 5
+  var amontOfStudent: Int = 20
 
   def createInvestors(): Unit =
   {
@@ -49,7 +49,7 @@ class Simulation(months_to_simulate: Int, Market: Market, Office: Office)
 
   def UniteStudentsWithTeachers() : Unit =
   {
-    for (i <- 1 to amountOfTeachers)
+    for (i <- 1 to amontOfStudent)
     {
       val random_number_teacher: Int = scala.util.Random.nextInt(amountOfTeachers) + 1
       val random_number_student: Int = scala.util.Random.nextInt(amontOfStudent) + 1
@@ -60,7 +60,7 @@ class Simulation(months_to_simulate: Int, Market: Market, Office: Office)
 
   def createCourses(): Unit =
   {
-    for (i <- 1 to 2)
+    for (i <- 1 to amountOfTeachers)
     {
       val course = new Course(i.toString(), scala.util.Random.nextInt(100) + 1, scala.util.Random.nextInt(10) + 1)
       Office.ListOfTeachers(i - 1).addCourse(course)
@@ -148,7 +148,6 @@ class Simulation(months_to_simulate: Int, Market: Market, Office: Office)
             Office.ListOfTeachers(j).giveTask(Office.ListOfTeachers(j).ListOfStudents(k))
           }
           Office.ListOfTeachers(j).GetSalary(Market)
-          println("sallary get")
         }
       }
     }

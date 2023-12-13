@@ -27,7 +27,6 @@ class Student (name:String  = "No data", surname:String  = "No data", age:Int = 
       print(list_of_grades.apply(i) + " ")
     }
     println(" ")
-
   }
 
   def doTask(): Int =
